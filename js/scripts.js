@@ -26,3 +26,31 @@ if (string.charAt(0) !== "a" && string.charAt(0) !== "e" && string.charAt(0) !==
 	res = string + "ay";
 }
 console.log(res);
+
+/********* Third Test Case *********/
+/* This will take the first constant and put it at the end + ay */
+/* This will take a word with a single vowel at the start and add ay to the end */
+/* This will take a string of multiple constanants and save them in an array until it hits a vowel, then take the word starting at the vowel and add the constanants before the vowel plus ay. */
+
+var string = "eipple";
+var res = "";
+var array = [];
+var pigLatin = "";
+
+for(i = 0; i < string.length; i++) {
+	if (string.charAt(i) === "a" || string.charAt(i) === "e" || string.charAt(i) === "i" || string.charAt(i) === "o" || string.charAt(i) === "u") {
+  	res = string.slice(i, string.length);
+    console.log(res);
+  	i = string.length;
+  } else {
+  	array.push(string.charAt(i));
+  }
+}
+
+var constants = array.join("");
+
+pigLatin = res + constants + "ay"; // ap + str + ay
+
+console.log("Pig Latin, " + pigLatin);
+console.log("Our constants " + constants);
+console.log("Our Array: " + array);

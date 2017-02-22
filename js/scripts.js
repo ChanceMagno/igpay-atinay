@@ -56,8 +56,8 @@ console.log("Our constants " + constants);
 console.log("Our Array: " + array);
 
 
-/********* Third Test Case *********/
-//this will identify qu in a sentence and return proper piglatin-still needs to check for vowels before finding Q. 
+/********* Fourth Test Case *********/
+// this will identify qu in a sentence and return proper piglatin-still needs to check for vowels before finding Q.
 
 var string = "quinn";
 var quEnd = "";
@@ -76,3 +76,42 @@ for(i = 0; i < string.length; i++) {
 
 finalString = quEnd + qu + "ay";
 console.log(finalString);
+
+
+/********* Fifth Test Case *********/
+// Integrated all prior code together, it will take any single word and return the proper piglatin translation
+
+var string = "yellow";
+var res = "";
+var array = [];
+var pigLatin = "";
+
+for(i = 0; i < string.length; i++) {
+	// if vowel is detected
+	if (string.charAt(i) === "a" || string.charAt(i) === "e" || string.charAt(i) === "i" || string.charAt(i) === "o" || string.charAt(i) === "u") {
+  	// if the vowel u, don't break the loop
+  	if (string.charAt(i) === "u") {
+    	res = string.slice(i, string.length);
+    } else {
+  		res = string.slice(i, string.length);
+
+  		i = string.length;
+    }
+    // if qu is next to each other
+  } else if (string.charAt(i) === "q" && string.charAt(i+1) === "u") {
+    array.push(string.charAt(i));
+    array.push(string.charAt(i+1));
+  } else {
+  	array.push(string.charAt(i));
+  }
+}
+
+var constants = array.join("");
+
+
+pigLatin = res + constants + "ay"; // ap + str + ay
+
+console.log("Pig Latin, " + pigLatin);
+console.log("Our constants " + constants);
+console.log("Our Array: " + array);
+console.log("Our res: " + res);

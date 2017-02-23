@@ -115,3 +115,56 @@ console.log("Pig Latin, " + pigLatin);
 console.log("Our constants " + constants);
 console.log("Our Array: " + array);
 console.log("Our res: " + res);
+
+
+/********* Sixth Test Case *********/
+// Integrated all prior code together, it will take multiple words and return the proper piglatin translation, including y as a vowel
+
+var string1 = "water bottle dog cat moose";
+var array = string1.split(" ");
+var string = "";
+var res = "";
+var pigLatin = "";
+
+console.log("Array: " + array);
+
+// this assigns each array index to a single word
+for (k = 0; k < array.length; k++) {
+  string = array[k];
+  console.log("Our words: " + string);
+  var modifiedArray = [];
+	// this uses that word to do piglatin things (first loop = my, second loop = dog)
+  for(i = 0; i < string.length; i++) {
+
+    // if vowel is detected
+    if (string.charAt(i) === "a" || string.charAt(i) === "e" || string.charAt(i) === "i" || string.charAt(i) === "o" || string.charAt(i) === "u" || string.charAt(i) === "y") {
+      // if the vowel u, don't break the loop
+      if (string.charAt(i) === "y") {
+      	if (!string.includes("a", "e", "i", "o", "u")) {
+      		res = string.slice(i, string.length);
+        } else if (string.charAt(i) === "u") {
+        	res = string.slice(i, string.length);
+        }
+      } else {
+        res = string.slice(i, string.length);
+
+        i = string.length;
+      }
+      // if qu is next to each other
+    } else if (string.charAt(i) === "q" && string.charAt(i+1) === "u") {
+      modifiedArray.push(string.charAt(i));
+      modifiedArray.push(string.charAt(i+1));
+    } else {
+      modifiedArray.push(string.charAt(i));
+    }
+  }
+  var constants = modifiedArray.join("");
+  console.log("Modified Array in loop " + modifiedArray);
+  pigLatin = res + constants + "ay";
+  console.log("Pig Latin, " + pigLatin);
+ }
+	// turns array into string
+
+	// combines everything together
+
+console.log("Res: " + res);
